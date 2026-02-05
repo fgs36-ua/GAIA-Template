@@ -40,7 +40,7 @@ Produce a single Markdown file per ticket named exactly:
 
 …saved under the same `specs/features/[feature-slug]/` folder as the ticket. This plan must:
 - Provide a crisp, test-first, BDD-aligned implementation approach.
-- Break work into **atomic tasks** that map to **specific Gherkin scenarios** (or parts of them).
+- Break work into **atomic tasks** that map to **specific Gherkin scenarios** (or parts of them). 
 - Embed **traceability** to the ticket and user story.
 - Specify measurable NFR hooks (security, performance, a11y, i18n, observability) where applicable.
 - Require documentation updates after coding:

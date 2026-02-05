@@ -20,7 +20,7 @@ description: when defining, implementing, or verifying any feature or business l
 
 1.  **Read First**: Before implementing any feature, ALWAYS read `specs/PRD.md` and the relevant feature spec in `specs/features/`.
 2.  **No Hallucinations**: If a feature is not in `specs/`, it does not exist. Ask the user before inventing it.
-3.  **Traceability**: Every Pull Request implementation MUST link back to a Ticket or User Story defined in `specs/`.
+3.  **Traceability**: Every Pull Request implementation MUST link back to a feature defined in `specs/`.
 
 > **Note:** If you find discrepancies between code and specs, priority goes to the Specs (ask user to update them if code is newer).
 
@@ -46,6 +46,9 @@ description: when defining, implementing, or verifying any feature or business l
   - Types: `DB`, `BE`, `FE`, `OTH`.
   - Example: `UM-USER-001-BE-T02`.
 - **Traceability**: Every ticket must reference its source User Story ID and specific Gherkin scenarios.
+- **Limited scope** Each ticket must affect max 1-2 files 
+- **Logical order, respecting dependencies**: DB->BE->FE
+- **Testability**: All tickets should be testable
 
 ### 4. NFR Mapping
 - **Security**: RBAC/ABAC, encryption, PII protection must be explicit criteria.
