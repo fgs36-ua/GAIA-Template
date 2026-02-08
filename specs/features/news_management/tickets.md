@@ -17,7 +17,7 @@
 
 ### Tickets for NM-ADMIN-001
 
-1. - [ ] **NM-ADMIN-001-DB-T01 — Create News table and enums**
+1. - [x] (2026-02-09) **NM-ADMIN-001-DB-T01 — Create News table and enums**
    - **Type**: DB
    - **Description**: Create the `news` table with all required fields to support article creation. Implements data model from feature-descr.md Annex.
    - **Scope**:
