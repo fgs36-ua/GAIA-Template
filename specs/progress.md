@@ -111,3 +111,15 @@ This file tracks milestones and deliverables completed during development.
 - **Milestone**: Generated Implementation Plan NM-MEMBER-001-FE-T01 (workflow: /plan-implementation-from-tickets)
 - **Artifacts**:
   - `specs/features/news_management/plan_NM-MEMBER-001-FE-T01.md`
+
+- **Date**: 2026-02-09
+- **Milestone**: Executed plan NM-ADMIN-001-DB-T01 (workflow: /execute-plan)
+- **Artifacts**:
+  - `docker-compose.yml` — PostgreSQL + backend services
+  - `backend/` — Full FastAPI structure scaffolded
+  - `backend/alembic/versions/001_create_users.py` — User table stub
+  - `backend/alembic/versions/002_create_news.py` — News table + enums
+  - `backend/app/infrastructure/models/news.py` — News SQLAlchemy model
+  - `backend/tests/integration/test_news_model.py` — Integration tests
+  - `specs/DataModel.md` — ER documentation
+- **Notes**: Backend infrastructure scaffolded from scratch. Ready to run `docker compose up -d` and `alembic upgrade head`.
