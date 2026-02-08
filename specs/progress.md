@@ -41,3 +41,8 @@ This file tracks milestones and deliverables completed during development.
 - **Milestone**: Generated Implementation Plan NM-ADMIN-002-FE-T01 (workflow: /plan-implementation-from-tickets)
 - **Artifacts**:
   - `specs/features/news_management/plan_NM-ADMIN-002-FE-T01.md`
+
+- **Date**: 2026-02-08
+- **Milestone**: Generated Implementation Plan NM-ADMIN-003-BE-T01 (workflow: /plan-implementation-from-tickets)
+- **Artifacts**:
+  - `specs/features/news_management/plan_NM-ADMIN-003-BE-T01.md`
