@@ -22,23 +22,25 @@ down_revision = '001_create_users'
 branch_labels = None
 depends_on = None
 
+# Define enums at module level with create_type=False to prevent auto-creation
+news_status_enum = postgresql.ENUM('DRAFT', 'PUBLISHED', 'ARCHIVED', name='news_status', create_type=False)
+news_scope_enum = postgresql.ENUM('GENERAL', 'INTERNAL', name='news_scope', create_type=False)
+
 
 def upgrade() -> None:
-    # Create enums
-    news_status = postgresql.ENUM('DRAFT', 'PUBLISHED', 'ARCHIVED', name='news_status')
-    news_scope = postgresql.ENUM('GENERAL', 'INTERNAL', name='news_scope')
-    news_status.create(op.get_bind())
-    news_scope.create(op.get_bind())
+    # Create enums first using raw SQL (most reliable approach)
+    op.execute("CREATE TYPE news_status AS ENUM ('DRAFT', 'PUBLISHED', 'ARCHIVED')")
+    op.execute("CREATE TYPE news_scope AS ENUM ('GENERAL', 'INTERNAL')")
     
-    # Create news table
+    # Create news table using the pre-defined enums with create_type=False
     op.create_table(
         'news',
-        sa.Column('id', postgresql.UUID(as_uuid=True), primary_key=True),
+        sa.Column('id', postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text('gen_random_uuid()')),
         sa.Column('title', sa.String(255), nullable=False),
         sa.Column('summary', sa.String(500), nullable=True),
         sa.Column('content', sa.Text(), nullable=True),
-        sa.Column('status', news_status, nullable=False, server_default='DRAFT'),
-        sa.Column('scope', news_scope, nullable=False, server_default='GENERAL'),
+        sa.Column('status', news_status_enum, nullable=False, server_default='DRAFT'),
+        sa.Column('scope', news_scope_enum, nullable=False, server_default='GENERAL'),
         sa.Column('author_id', postgresql.UUID(as_uuid=True), sa.ForeignKey('users.id'), nullable=False),
         sa.Column('cover_url', sa.String(2048), nullable=True),
         sa.Column('published_at', sa.DateTime(timezone=True), nullable=True),
@@ -66,6 +68,6 @@ def downgrade() -> None:
     # Drop table
     op.drop_table('news')
     
-    # Drop enums
-    postgresql.ENUM(name='news_scope').drop(op.get_bind())
-    postgresql.ENUM(name='news_status').drop(op.get_bind())
+    # Drop enums using raw SQL
+    op.execute("DROP TYPE IF EXISTS news_scope")
+    op.execute("DROP TYPE IF EXISTS news_status")
