@@ -140,3 +140,13 @@ This file tracks milestones and deliverables completed during development.
   - `backend/tests/integration/test_news_api.py` — 6 API tests
 - **Notes**: POST /api/news endpoint implemented following hexagonal architecture. Verify at http://localhost:8005/docs
 
+- **Date**: 2026-02-09
+- **Milestone**: Executed plan NM-ADMIN-001-FE-T01 (workflow: /execute-plan)
+- **Artifacts**:
+  - `frontend/src/features/news/components/NewsForm.tsx` — Form with ReactQuill, Zod validation, a11y
+  - `frontend/src/features/news/pages/NewsFormPage.tsx` — Page with API integration and toasts
+  - `frontend/src/features/news/schemas/news.schema.ts` — Zod v4 schema with Spanish messages
+  - `frontend/src/features/news/api/useCreateNews.ts` — TanStack Query mutation hook
+  - `frontend/src/features/news/schemas/__tests__/news.schema.test.ts` — 12 unit tests
+  - `frontend/src/features/news/components/__tests__/NewsForm.test.tsx` — 6 component tests (RTL)
+- **Notes**: Frontend scaffolded (Vite + React + Tailwind v4 + shadcn/ui). All 18 tests pass. Verify at http://localhost:5188/admin/news/new

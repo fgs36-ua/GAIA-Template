@@ -14,7 +14,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d appdb"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d appdb" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -36,5 +36,22 @@ services:
         condition: service_healthy
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: gaia-frontend
+    environment:
+      VITE_API_BASE_URL: http://localhost:8005
+    ports:
+      - "5188:5188"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
 volumes:
   postgres_data:
+
+

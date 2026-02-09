@@ -47,7 +47,7 @@
    - **Security**: Admin role check, input sanitization (bleach/html-sanitizer)
    - **Observability**: Audit log entry on create
 
-3. - [ ] **NM-ADMIN-001-FE-T01 — News creation form UI**
+3. - [x] **NM-ADMIN-001-FE-T01 — News creation form UI** (2026-02-09)
    - **Type**: FE
    - **Description**: Build the news creation form with title, summary, rich text editor, and scope selector. Integrates with backend POST endpoint.
    - **Scope**:
