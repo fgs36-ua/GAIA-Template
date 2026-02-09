@@ -13,10 +13,11 @@ import os
 from app.infrastructure.db.base import Base
 
 
-# Test database URL (use separate test database)
+# Test database URL - inside Docker, use db:5432 (internal network)
+# Falls back to localhost:5455 for local development outside Docker
 TEST_DATABASE_URL = os.getenv(
     "TEST_DATABASE_URL", 
-    "postgresql://postgres:postgres@localhost:5455/appdb_test"
+    "postgresql://postgres:postgres@db:5432/appdb"
 )
 
 
