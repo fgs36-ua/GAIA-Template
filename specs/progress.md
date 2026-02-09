@@ -123,3 +123,20 @@ This file tracks milestones and deliverables completed during development.
   - `backend/tests/integration/test_news_model.py` — Integration tests
   - `specs/DataModel.md` — ER documentation
 - **Notes**: Backend infrastructure scaffolded from scratch. Ready to run `docker compose up -d` and `alembic upgrade head`.
+
+- **Date**: 2026-02-09
+- **Milestone**: Executed plan NM-ADMIN-001-BE-T01 (workflow: /execute-plan)
+- **Artifacts**:
+  - `backend/app/domain/entities/news.py` — News domain entity with dataclass
+  - `backend/app/domain/repositories/news_repository.py` — Repository interface (port)
+  - `backend/app/infrastructure/db/mappers/news_mapper.py` — Entity-model mapper
+  - `backend/app/infrastructure/repositories/news_repository_impl.py` — SQLAlchemy adapter
+  - `backend/app/application/use_cases/news/create_news.py` — Use case with XSS sanitization
+  - `backend/app/presentation/schemas/news.py` — Pydantic V2 request/response DTOs
+  - `backend/app/presentation/api/news.py` — POST /api/news router
+  - `backend/app/core/security.py` — Admin stub security dependency
+  - `backend/tests/unit/test_create_news_use_case.py` — 8 unit tests
+  - `backend/tests/integration/test_news_repository.py` — 5 repository tests
+  - `backend/tests/integration/test_news_api.py` — 6 API tests
+- **Notes**: POST /api/news endpoint implemented following hexagonal architecture. Verify at http://localhost:8005/docs
+

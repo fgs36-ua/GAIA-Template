@@ -1,0 +1,2 @@
+# Infrastructure repositories module
+from app.infrastructure.repositories.news_repository_impl import NewsRepositoryImpl

@@ -10,6 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.presentation.api import health
+from app.presentation.api import news
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -30,6 +31,8 @@ app.add_middleware(
 )
 
 # Include routers
+# [Feature: Infrastructure] [Story: Backend Setup] [Ticket: NM-ADMIN-001-DB-T01]
 app.include_router(health.router, prefix="/api", tags=["health"])
 
-# News router will be added in NM-ADMIN-001-BE-T01
+# [Feature: News Management] [Story: NM-ADMIN-001] [Ticket: NM-ADMIN-001-BE-T01]
+app.include_router(news.router, prefix="/api", tags=["news"])

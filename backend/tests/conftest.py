@@ -48,3 +48,23 @@ def db_session(engine, tables):
     session.close()
     transaction.rollback()
     connection.close()
+
+
+@pytest.fixture
+def sample_user(db_session):
+    """Create a sample user for testing author relationships."""
+    from app.infrastructure.models.user import User
+    
+    user = User(
+        email="test@example.com",
+        hashed_password="hashed_password_placeholder",
+        full_name="Test User",
+        is_active=True,
+        is_superuser=True,
+    )
+    db_session.add(user)
+    db_session.commit()
+    db_session.refresh(user)
+    
+    return user
+

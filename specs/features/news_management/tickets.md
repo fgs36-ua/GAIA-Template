@@ -29,7 +29,7 @@
      - SQLAlchemy model `News` in `infrastructure/models/news.py`
      - Update `specs/DataModel.md`
 
-2. - [ ] **NM-ADMIN-001-BE-T01 — Create News endpoint (POST /api/news)**
+2. - [x] (2026-02-09) **NM-ADMIN-001-BE-T01 — Create News endpoint (POST /api/news)**
    - **Type**: BE
    - **Description**: Implement POST endpoint to create a news article as draft. Enforces Admin-only access, validates required fields, sanitizes rich text content.
    - **Scope**:
