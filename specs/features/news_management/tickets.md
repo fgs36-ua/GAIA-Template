@@ -85,7 +85,7 @@
      - Unit tests, Integration tests
    - **Security**: Admin role check, 403 for non-admins
 
-2. - [ ] **NM-ADMIN-002-FE-T01 — News edit form UI**
+2. - [x] **NM-ADMIN-002-FE-T01 — News edit form UI** (2026-02-10)
    - **Type**: FE
    - **Description**: Extend news form to support edit mode. Pre-populate fields from existing article.
    - **Scope**:

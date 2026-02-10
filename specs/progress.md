@@ -162,3 +162,15 @@ This file tracks milestones and deliverables completed during development.
   - `backend/app/presentation/api/news.py` — PUT /api/news/{id} endpoint
   - `backend/tests/unit/test_update_news_use_case.py` — 8 unit tests
 - **Notes**: PUT /api/news/{id} implemented. All 16 unit tests pass (0 regressions). Verify at http://localhost:8005/docs
+
+- **Date**: 2026-02-10
+- **Milestone**: Executed plan NM-ADMIN-002-FE-T01 (workflow: /execute-plan)
+- **Artifacts**:
+  - `frontend/src/features/news/api/useNewsById.ts` — Query hook (fetch article by ID)
+  - `frontend/src/features/news/api/useUpdateNews.ts` — Mutation hook (PUT endpoint)
+  - `frontend/src/features/news/components/NewsForm.tsx` — Added defaultValues + submitLabel props
+  - `frontend/src/features/news/pages/NewsFormPage.tsx` — Edit mode with loading skeleton + 404
+  - `frontend/src/components/ui/skeleton.tsx` — Skeleton UI component (new)
+  - `frontend/src/App.tsx` — Added /admin/news/:id/edit route
+  - `frontend/src/features/news/pages/__tests__/NewsFormPage.test.tsx` — 9 component tests
+- **Notes**: All 27 frontend tests pass (0 regressions). Verify at http://localhost:5188/admin/news/{id}/edit

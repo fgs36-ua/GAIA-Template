@@ -1,4 +1,5 @@
 // [Feature: News Management] [Story: NM-ADMIN-001] [Ticket: NM-ADMIN-001-FE-T01]
+// [Feature: News Management] [Story: NM-ADMIN-002] [Ticket: NM-ADMIN-002-FE-T01]
 
 import { useForm, type SubmitHandler, type Resolver } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,12 +26,20 @@ export interface FormValues {
     coverUrl?: string | null;
 }
 
+// [Feature: News Management] [Story: NM-ADMIN-002] [Ticket: NM-ADMIN-002-FE-T01]
 interface NewsFormProps {
     onSubmit: (data: FormValues) => void;
     isLoading?: boolean;
+    defaultValues?: Partial<FormValues>;
+    submitLabel?: string;
 }
 
-export function NewsForm({ onSubmit, isLoading }: NewsFormProps) {
+export function NewsForm({
+    onSubmit,
+    isLoading,
+    defaultValues,
+    submitLabel = 'Guardar Borrador',
+}: NewsFormProps) {
     const {
         register,
         handleSubmit,
@@ -40,15 +49,16 @@ export function NewsForm({ onSubmit, isLoading }: NewsFormProps) {
     } = useForm<FormValues>({
         resolver: zodResolver(newsFormSchema) as Resolver<FormValues>,
         defaultValues: {
-            title: '',
-            summary: '',
-            content: '',
-            scope: 'GENERAL',
-            coverUrl: '',
+            title: defaultValues?.title || '',
+            summary: defaultValues?.summary || '',
+            content: defaultValues?.content || '',
+            scope: defaultValues?.scope || 'GENERAL',
+            coverUrl: defaultValues?.coverUrl || '',
         },
     });
 
     const content = watch('content');
+    const scope = watch('scope');
 
     const onFormSubmit: SubmitHandler<FormValues> = (data) => {
         onSubmit(data);
@@ -103,11 +113,11 @@ export function NewsForm({ onSubmit, isLoading }: NewsFormProps) {
                 />
             </div>
 
-            {/* Scope */}
+            {/* Scope — uses controlled value for edit mode */}
             <div className="space-y-2">
                 <Label htmlFor="scope">Ámbito</Label>
                 <Select
-                    defaultValue="GENERAL"
+                    value={scope}
                     onValueChange={(value) => setValue('scope', value as 'GENERAL' | 'INTERNAL')}
                 >
                     <SelectTrigger id="scope">
@@ -123,7 +133,7 @@ export function NewsForm({ onSubmit, isLoading }: NewsFormProps) {
             {/* Submit */}
             <div className="flex justify-end gap-4">
                 <Button type="submit" disabled={isLoading}>
-                    {isLoading ? 'Guardando...' : 'Guardar Borrador'}
+                    {isLoading ? 'Guardando...' : submitLabel}
                 </Button>
             </div>
         </form>

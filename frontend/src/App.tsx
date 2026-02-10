@@ -9,6 +9,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/admin/news/new" element={<NewsFormPage />} />
+        {/* [Feature: News Management] [Story: NM-ADMIN-002] [Ticket: NM-ADMIN-002-FE-T01] */}
+        <Route path="/admin/news/:id/edit" element={<NewsFormPage />} />
       </Routes>
     </div>
   )
