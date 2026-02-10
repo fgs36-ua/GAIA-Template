@@ -71,7 +71,7 @@
 
 ### Tickets for NM-ADMIN-002
 
-1. - [ ] **NM-ADMIN-002-BE-T01 — Update News endpoint (PUT /api/news/{id})**
+1. - [x] **NM-ADMIN-002-BE-T01 — Update News endpoint (PUT /api/news/{id})** (2026-02-10)
    - **Type**: BE
    - **Description**: Implement PUT endpoint to update an existing article. Preserves `published_at` for published articles. Admin-only access.
    - **Scope**:

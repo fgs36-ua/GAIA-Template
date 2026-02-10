@@ -150,3 +150,15 @@ This file tracks milestones and deliverables completed during development.
   - `frontend/src/features/news/schemas/__tests__/news.schema.test.ts` — 12 unit tests
   - `frontend/src/features/news/components/__tests__/NewsForm.test.tsx` — 6 component tests (RTL)
 - **Notes**: Frontend scaffolded (Vite + React + Tailwind v4 + shadcn/ui). All 18 tests pass. Verify at http://localhost:5188/admin/news/new
+
+- **Date**: 2026-02-10
+- **Milestone**: Executed plan NM-ADMIN-002-BE-T01 (workflow: /execute-plan)
+- **Artifacts**:
+  - `backend/app/core/exceptions.py` — NotFoundException
+  - `backend/app/domain/repositories/news_repository.py` — Added update() abstract method
+  - `backend/app/infrastructure/repositories/news_repository_impl.py` — Implemented update()
+  - `backend/app/application/use_cases/news/update_news.py` — Use case with XSS sanitization
+  - `backend/app/presentation/schemas/news.py` — UpdateNewsRequest DTO
+  - `backend/app/presentation/api/news.py` — PUT /api/news/{id} endpoint
+  - `backend/tests/unit/test_update_news_use_case.py` — 8 unit tests
+- **Notes**: PUT /api/news/{id} implemented. All 16 unit tests pass (0 regressions). Verify at http://localhost:8005/docs

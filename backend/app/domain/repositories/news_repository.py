@@ -28,3 +28,9 @@ class NewsRepository(ABC):
     def get_by_id(self, news_id: UUID) -> Optional[News]:
         """Retrieve a news article by ID, or None if not found."""
         pass
+
+    # [Feature: News Management] [Story: NM-ADMIN-002] [Ticket: NM-ADMIN-002-BE-T01]
+    @abstractmethod
+    def update(self, news: News) -> News:
+        """Update an existing news article and return updated entity."""
+        pass
